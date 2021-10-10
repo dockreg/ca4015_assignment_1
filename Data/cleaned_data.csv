@@ -1,4 +1,4 @@
-,index,1,2,3,4,tot_win,tot_los,Subj,Study,Unique_ID,balance,Payoff
+,index,Deck_A,Deck_B,Deck_C,Deck_D,tot_win,tot_los,Subj,Study,Unique_ID,balance,Payoff
 0,Subj_1,12,9,3,71,5800,-4650,1,Fridberg,1,1150,1
 1,Subj_2,24,26,12,33,7250,-7925,2,Fridberg,2,-675,1
 2,Subj_3,12,35,10,38,7100,-7850,3,Fridberg,3,-750,1
