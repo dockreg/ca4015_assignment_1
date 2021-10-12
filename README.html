@@ -86,6 +86,29 @@
   </a>
  </li>
 </ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/Data_Cleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/K_Means_Clustering.html">
+   Data Preprocessing, Standardization, and K-means clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/Privacy_preserving_k_means.html">
+   Privacy Preserving k-means
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conclusion.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
     </div>
 </nav> <!-- To handle the deprecated key -->
 
@@ -182,18 +205,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#technologies-used">
-   Technologies Used
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#features">
-   Features
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   Setup
+  <a class="reference internal nav-link" href="#requirements">
+   Requirements
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -225,15 +238,13 @@
   <div class="section" id="clustering-analysis-of-the-iowa-gambling-task">
 <h1>Clustering Analysis of the Iowa Gambling Task<a class="headerlink" href="#clustering-analysis-of-the-iowa-gambling-task" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>This project will explore the data from the Iowa Gambling task using unsupervised learning algorithms. The data used for this project can be found <a class="reference external" href="http://doi.org/10.5334/jopd.ak"><em>here</em></a>.</p>
+<div><p>This project will explore the data from the Iowa Gambling task using unsupervised learning algorithms. The data used for this project can be found <a class="reference external" href="http://doi.org/10.5334/jopd.ak"><em>here</em></a>. The resulting online jupyter book can be found <a class="reference external" href="https://dockreg.github.io/ca4015_assignment_1/intro.html"><em>here</em></a> and the pdf version <a class="reference external" href="https://github.com/dockreg/ca4015_assignment_1/blob/main/_build/pdf/book.pdf"><em>here</em></a></p>
 </div></blockquote>
 <div class="section" id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#general-information">General Info</a></p></li>
-<li><p><a class="reference external" href="#technologies-used">Technologies Used</a></p></li>
-<li><p><a class="reference external" href="#features">Features</a></p></li>
-<li><p><a class="reference external" href="#setup">Setup</a></p></li>
+<li><p><a class="reference external" href="#requirements">Requirements</a></p></li>
 <li><p><a class="reference external" href="#usage">Usage</a></p></li>
 <li><p><a class="reference external" href="#project-status">Project Status</a></p></li>
 <li><p><a class="reference external" href="#room-for-improvement">Room for Improvement</a></p></li>
@@ -247,29 +258,46 @@
 <li><p>It will also provide experience using jupyter notebooks, git, markdown, and clustering analysis</p></li>
 </ul>
 </div>
-<div class="section" id="technologies-used">
-<h2>Technologies Used<a class="headerlink" href="#technologies-used" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Python - version 3.7.3</p></li>
+<li><p>python</p></li>
+<li><p>pandas</p></li>
+<li><p>matplotlib</p></li>
+<li><p>jupyter-book</p></li>
+<li><p>numpy</p></li>
+<li><p>scipy</p></li>
+<li><p>sklearn</p></li>
+<li><p>array</p></li>
+<li><p>pyppeteer</p></li>
 </ul>
-</div>
-<div class="section" id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
-<p>requirements/dependencies/environments/requirements.txt</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>To build the book - ensure all requirements have been imported to the appropriate environment and then enter the following commands</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="n">ca4015_assignment_1</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>then followed by</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">f</span> <span class="n">ca4015_assignment_1</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>This will build the online book in a seperate gh-pages branch</p>
+<p>To build a pdf of this book, ensure all requirements are installed and then enter the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="n">ca4015_assignment_1</span><span class="o">/</span> <span class="o">--</span><span class="n">builder</span> <span class="n">pdfhtml</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="project-status">
 <h2>Project Status<a class="headerlink" href="#project-status" title="Permalink to this headline">¶</a></h2>
-<p>Project is: <em>in progress</em></p>
+<p>Project is: completed</p>
 </div>
 <div class="section" id="room-for-improvement">
 <h2>Room for Improvement<a class="headerlink" href="#room-for-improvement" title="Permalink to this headline">¶</a></h2>
-<p>Areas for improvement:</p>
+<p>I would like to further investigate this data set and my methods around k-means clustering. I would like to gain some further insights around trends for healthy individuals vs those with prefrontal cortex health issues. As this was my first project using k-means I would like to delve further into its uses, and any limitations it may have as an unsupervised learning algorithm</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 
