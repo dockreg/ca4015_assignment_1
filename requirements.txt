@@ -1,3 +1,9 @@
 jupyter-book
 matplotlib
 numpy
+scipy
+pandas
+sklearn
+seaborn
+array
+pyppeteer

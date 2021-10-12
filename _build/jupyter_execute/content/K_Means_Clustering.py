@@ -102,13 +102,6 @@ X_scaled = scaler.transform(df)
 # In[8]:
 
 
-#X_scaled.std(axis=0)
-X_scaled.mean(axis=0)
-
-
-# In[9]:
-
-
 #rename columns to clearly represent decks
 sd = pd.DataFrame(X_scaled, columns=['Deck_A', 'Deck_B', 'Deck_C', 'Deck_D', 'tot_win', 'tot_los', 'Payoff', 'Fridberg', 'Horstmann', 'Kjome', 'Maia', 'Premkumar', 'Steingroever2011', 'SteingroverInPrep', 'Wetzels', 'Wood', 'Worthy'])
 sd
@@ -131,13 +124,11 @@ sd
 # $$d = √((x1-y1)² + (x2-y2)²)$$
 # 
 
-# The elbow method and silhouette coefficient have resulted in a strong indication that k=10 for this data set. The elbow method did show a slight change in improvement at the k=3 and k=8 stage and the silhouette coefficient also at the k=8 stage. This reduces the potential that our data should be clustered according to the payload but we will explore the two options- k=3 and k=10.
-
 # ## PCA dimensionality reduction
 # 
 # Principal component analysis is a method whereby we can reduce the dimensions used to represent our data. This can help with the curse of dimensionality which can often make clustering algorithms challenging with so many features. PCA helps us by taking all of these features and represents the data within a new set of features (the number of which we can decide). This can often help with the visualisation of cluster as we can reduce the features to 2 components which will healp to plot our points and therefore visualise the clustering algorithm and how well it represents our data.
 
-# In[10]:
+# In[9]:
 
 
 #select how many features we want
@@ -150,14 +141,14 @@ df = pca.fit_transform(sd)
 # 
 # The first step in the k-means algorithm involves calculating what is the most appropriate value for k. We will explore the elbow method and the silhoutte coefficient to determine our value for k within this project.
 # 
-# From our data exploration thus far we are interested in whether the data should be partitioned in 10 groups (k=10) for each study we have, or whether clustering would be best in 3 groups(k=3) to reflcet the 3 payoff schemes we have seen.
+# From our data exploration thus far we are interested in whether the data should be partitioned in 10 groups (k=10) for each study we have, or whether clustering would be best in 3 groups(k=3) to reflect the 3 payoff schemes we have seen.
 # 
 # #### Elbow Method
 # The elbow method involves calculating the sum of squared error (SSE) and deciding at what point the modelling of the data is most appropriate. Often we can add further clusters without much gain in SSE and so we must determine at which point any further returns are no longer worthwhile.
 # 
 # $$ SSE = \sum_{i=1}^n (y_i-ŷ_i)^2$$
 
-# In[11]:
+# In[10]:
 
 
 kmeans_kwargs = {
@@ -197,7 +188,7 @@ plt.show()
 # 
 # y = average distance between all clusters
 
-# In[12]:
+# In[11]:
 
 
 # A list holds the silhouette coefficients for each k
@@ -216,9 +207,9 @@ plt.ylabel("Silhouette Coefficient")
 plt.show()
 
 
-# Again we see that k=3 returns the highest value for the silhouette coefficient confirming that payoff scheme may be the most defining feature in the data for the outcome of the Iowa Gambling task.
+# Again we see that k=3 returns the highest value for the silhouette coefficient confirming that payoff scheme may be the most defining feature in the data for the outcome of the Iowa Gambling task. We will proceed to cluster with k=3.
 
-# In[13]:
+# In[12]:
 
 
 kmeans = KMeans(n_clusters= 3)
@@ -238,7 +229,9 @@ plt.ylabel("Component 2")
 plt.show()
 
 
-# In[14]:
+# Interestingly this instance of k-means has split the data into three clusters which may not intuitively be the ideal clusters. This can often be a limiting factor when using k-means. We now add the Payoff labels back onto the data to visuakise the same points with each payoff scheme identified by a different color.
+
+# In[13]:
 
 
 tmp = pd.DataFrame(df, columns=['Component_1', 'Component_2'])
@@ -247,49 +240,51 @@ tmp = pd.DataFrame(df, columns=['Component_1', 'Component_2'])
 original_labels = pd.concat([tmp, clean_data[["Study", "Payoff"]]], axis=1)
 
 
-# In[15]:
+# In[14]:
 
 
 original_labels
 
 
-# In[16]:
+# In[15]:
 
 
 colors = {'Fridberg': 'blue','Horstmann': 'red','Kjome': 'green','Maia': 'yellow','SteingroverInPrep': 'black','Premkumar': 'orange','Wood': 'purple','Worthy': 'grey','Steingroever2011': 'brown','Wetzels': 'pink'}
 #for i in range(618):
 figure(figsize=(6, 4))
 plt.scatter(original_labels['Component_1'], original_labels["Component_2"], c = original_labels["Study"].map(colors), s=20)
-plt.legend(['Fridberg','Horstmann','Kjome','Maia','SteingroverInPrep','Premkumar','Wood','Worthy','Steingroever2011','Wetzels'])
 plt.xlabel("Component 1")
 plt.ylabel("Component 2")
 plt.show()
 
+for k in colors:
+    print(k + ": " + colors[k])
 
-# In[17]:
+
+# In[16]:
 
 
 colors = {1: 'blue',2: 'brown',3:'red'}
 #for i in range(618):
 figure(figsize=(6, 4))
 plt.scatter(original_labels["Component_1"], original_labels["Component_2"], c=original_labels["Payoff"].map(colors), s=20)
-plt.legend()
 plt.xlabel("Component 1")
 plt.ylabel("Component 2")
 plt.title("Clustering by Payoff")
 plt.show()
 
 
+# We can see that the payoff data clearly has a large impact on our clusters that we have created. All data points have been assigned to the same cluster as other data points in their payoff. 
+
 # ## k=10 (without payoff data)
 # 
 # To explore the possibility that our data is impacted by the study in which it was recorded we drop the payoff column and then reduce the dimensionality before computing our clusters with k=10 
 
-# In[18]:
+# In[17]:
 
 
-#w_out = pd.DataFrame(df, columns=['Component_1', 'Component_2'])
+#drop payoff column
 w_out_payoff = sd.drop(columns=["Payoff"])
-w_out_payoff
 
 pca = PCA(2)
 w_out = pca.fit_transform(w_out_payoff)
@@ -311,7 +306,9 @@ plt.ylabel("Component 2")
 plt.show()
 
 
-# In[19]:
+# We then plot the same data points but clustering by study using a unique color for each
+
+# In[18]:
 
 
 t = pd.DataFrame(w_out, columns=['Component_1', 'Component_2'])
@@ -323,18 +320,15 @@ colors = {'Fridberg': 'blue','Horstmann': 'red','Kjome': 'green','Maia': 'yellow
 #for i in range(618):
 figure(figsize=(6, 4))
 plt.scatter(t_labels['Component_1'], t_labels["Component_2"], c = t_labels["Study"].map(colors), s=20)
-plt.legend(['Fridberg','Horstmann','Kjome','Maia','SteingroverInPrep','Premkumar','Wood','Worthy','Steingroever2011','Wetzels'])
 plt.xlabel("Component 1")
 plt.ylabel("Component 2")
 plt.show()
 
+#show study-colors
+for k in colors:
+    print(k + ": " + colors[k])
+
 
 # ## Analysis
 # 
-# The two features we have identified, Payoff scheme and study, have clearly impacted the results of this study. The clusters for payoff show how strongly weighted this was within the clustering algorithm. We can agree from this that the appropriate value for k is 3 and that using k=10 can also tell us an interesting insight into how these features may unexpectedly affect the final clustering result.
-
-# In[ ]:
-
-
-
-
+# The two features we have identified, Payoff scheme and study, have clearly impacted the results of this clustering algorithm. The clusters for payoff show how strongly weighted this was within the clustering algorithm. We can agree from this that the appropriate value for k is 3 and that using k=10 can also tell us an interesting insight into how using study as a features may affect the final clustering result.

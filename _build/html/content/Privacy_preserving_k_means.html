@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; CA4015 - Clustering Analysis of the Iowa Gambling Task</title>
+    <title>Privacy Preserving k-means &#8212; CA4015 - Clustering Analysis of the Iowa Gambling Task</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,6 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Data Preprocessing, Standardization, and K-means clustering" href="K_Means_Clustering.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -86,6 +87,24 @@
   </a>
  </li>
 </ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Data_Cleaning.html">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="K_Means_Clustering.html">
+   Data Preprocessing, Standardization, and K-means clustering
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Privacy Preserving k-means
+  </a>
+ </li>
+</ul>
+
     </div>
 </nav> <!-- To handle the deprecated key -->
 
@@ -183,14 +202,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -199,7 +210,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="privacy-preserving-k-means">
+<h1>Privacy Preserving k-means<a class="headerlink" href="#privacy-preserving-k-means" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -512,16 +525,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Privacy_preserving_k_means_4_0.png" src="../_images/Privacy_preserving_k_means_4_0.png" />
-<img alt="../_images/Privacy_preserving_k_means_4_1.png" src="../_images/Privacy_preserving_k_means_4_1.png" />
-<img alt="../_images/Privacy_preserving_k_means_4_2.png" src="../_images/Privacy_preserving_k_means_4_2.png" />
-<img alt="../_images/Privacy_preserving_k_means_4_3.png" src="../_images/Privacy_preserving_k_means_4_3.png" />
-<img alt="../_images/Privacy_preserving_k_means_4_4.png" src="../_images/Privacy_preserving_k_means_4_4.png" />
-<img alt="../_images/Privacy_preserving_k_means_4_5.png" src="../_images/Privacy_preserving_k_means_4_5.png" />
-<img alt="../_images/Privacy_preserving_k_means_4_6.png" src="../_images/Privacy_preserving_k_means_4_6.png" />
-<img alt="../_images/Privacy_preserving_k_means_4_7.png" src="../_images/Privacy_preserving_k_means_4_7.png" />
-<img alt="../_images/Privacy_preserving_k_means_4_8.png" src="../_images/Privacy_preserving_k_means_4_8.png" />
-<img alt="../_images/Privacy_preserving_k_means_4_9.png" src="../_images/Privacy_preserving_k_means_4_9.png" />
+<img alt="../_images/Privacy_preserving_k_means_5_0.png" src="../_images/Privacy_preserving_k_means_5_0.png" />
+<img alt="../_images/Privacy_preserving_k_means_5_1.png" src="../_images/Privacy_preserving_k_means_5_1.png" />
+<img alt="../_images/Privacy_preserving_k_means_5_2.png" src="../_images/Privacy_preserving_k_means_5_2.png" />
+<img alt="../_images/Privacy_preserving_k_means_5_3.png" src="../_images/Privacy_preserving_k_means_5_3.png" />
+<img alt="../_images/Privacy_preserving_k_means_5_4.png" src="../_images/Privacy_preserving_k_means_5_4.png" />
+<img alt="../_images/Privacy_preserving_k_means_5_5.png" src="../_images/Privacy_preserving_k_means_5_5.png" />
+<img alt="../_images/Privacy_preserving_k_means_5_6.png" src="../_images/Privacy_preserving_k_means_5_6.png" />
+<img alt="../_images/Privacy_preserving_k_means_5_7.png" src="../_images/Privacy_preserving_k_means_5_7.png" />
+<img alt="../_images/Privacy_preserving_k_means_5_8.png" src="../_images/Privacy_preserving_k_means_5_8.png" />
+<img alt="../_images/Privacy_preserving_k_means_5_9.png" src="../_images/Privacy_preserving_k_means_5_9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -537,7 +550,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Privacy_preserving_k_means_5_0.png" src="../_images/Privacy_preserving_k_means_5_0.png" />
+<img alt="../_images/Privacy_preserving_k_means_6_0.png" src="../_images/Privacy_preserving_k_means_6_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -564,7 +577,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Privacy_preserving_k_means_6_0.png" src="../_images/Privacy_preserving_k_means_6_0.png" />
+<img alt="../_images/Privacy_preserving_k_means_7_0.png" src="../_images/Privacy_preserving_k_means_7_0.png" />
+</div>
 </div>
 </div>
 
@@ -597,6 +611,15 @@
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="K_Means_Clustering.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Data Preprocessing, Standardization, and K-means clustering</p>
+            </div>
+        </a>
+    </div>
 
 </div>
         

@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# ## Privacy Preserving k-means
+# 
+# Data privacy is an extremely sensitive topic which requires a selection of methods/techniques when processing or using individuals data. Some new approaches to this involve the creation of synthetic data or the move away from sharing any individuals data at all to a single central data source. This second approach involves processing data at source and sharing only the key information centrally. This can mean processing data within a device, or at a central source (i.e. within a single study) and then sharing only the key information that is needed about that data. This section will discuss how information could be shared in this case between studies to gain a central cluster without passing on any individuals data from one study to another. 
+
 # In[1]:
 
 
@@ -30,6 +34,10 @@ data = pd.read_csv('../data/cleaned_data.csv')
 
 data
 
+
+# #### Clustering by study
+# 
+# We cluster each study individually with k=3 and display these clusters below
 
 # In[4]:
 
@@ -88,23 +96,29 @@ for s in l:
     for i in u_labels:
         plt.scatter(df[label == i , 0] , df[label == i , 1] , label = i)
     plt.legend()
-    #plt.title()
     plt.xlabel("Component 1")
     plt.ylabel("Component 2")
     plt.show()
 
+
+# #### Centroid collection
+# 
+# We make a list called clusters above, with all of the centroids for each of the studies and plot these all together in the next cell. This gives an indication of each studies data distribution without providing any raw data centrally.
 
 # In[6]:
 
 
 arr = np.vstack(clusters)
 plt.scatter(arr[:,0], arr[:,1])
-#plt.legend()
-#plt.title()
+plt.title("Centroids across all studies")
 plt.xlabel("Component 1")
 plt.ylabel("Component 2")
 plt.show()
 
+
+# #### Final clustering
+# 
+# We then cluster these centroids to see what our final distribution is like
 
 # In[7]:
 
@@ -129,8 +143,6 @@ plt.show()
  
 
 
-# In[ ]:
-
-
-
-
+# ## Analysis
+# 
+# This is an incredibly simplistic and naive method of privacy preserving clustering. The use of centroids causes issues as some centroids will have been created with very few points and others with a large number of data points and hence the clustering will be quite poor in comparison to the original clustering effort. Some more work would need to be done to explore a better way of protecting individuals privacy while allowing us to centrally analyse our data using k-means.

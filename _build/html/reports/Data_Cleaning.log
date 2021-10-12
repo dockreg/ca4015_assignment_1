@@ -51,7 +51,7 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 
 ------------------
 
-[0;36m  File [0;32m"/var/folders/hx/6lc74_f56l757kmmkybd34xr0000gn/T/ipykernel_39202/3361174304.py"[0;36m, line [0;32m13[0m
+[0;36m  File [0;32m"/var/folders/hx/6lc74_f56l757kmmkybd34xr0000gn/T/ipykernel_63391/3361174304.py"[0;36m, line [0;32m13[0m
 [0;31m    'Choice_7', 'Choice_8', 'Choice_9', 'Choice_10', 'Choice_11',[0m
 [0m    ^[0m
 [0;31mIndentationError[0m[0;31m:[0m unexpected indent
