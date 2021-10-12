@@ -7,3 +7,4 @@ chapters:
 - file: content/Data_Cleaning
 - file: content/K_Means_Clustering
 - file: content/Privacy_preserving_k_means
+- file: conclusion

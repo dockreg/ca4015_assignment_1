@@ -1,5 +1,5 @@
 # Clustering Analysis of the Iowa Gambling Task
-> This project will explore the data from the Iowa Gambling task using unsupervised learning algorithms. The data used for this project can be found [_here_](http://doi.org/10.5334/jopd.ak). The resulting jupyter book can be found [_here_](https://dockreg.github.io/ca4015_assignment_1/intro.html)
+> This project will explore the data from the Iowa Gambling task using unsupervised learning algorithms. The data used for this project can be found [_here_](http://doi.org/10.5334/jopd.ak). The resulting online jupyter book can be found [_here_](https://dockreg.github.io/ca4015_assignment_1/intro.html) and the pdf version [_here_](https://github.com/dockreg/ca4015_assignment_1/blob/main/_build/pdf/book.pdf)
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -25,6 +25,7 @@
 - scipy
 - sklearn
 - array
+- pyppeteer
 
 
 ## Usage

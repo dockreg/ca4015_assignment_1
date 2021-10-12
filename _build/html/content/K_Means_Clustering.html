@@ -106,6 +106,11 @@
    Privacy Preserving k-means
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusion.html">
+   Conclusion
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -1226,23 +1231,6 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#X_scaled.std(axis=0)</span>
-<span class="n">X_scaled</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.30321794e-17, -5.75804486e-17,  2.30321794e-17, -2.30321794e-17,
-       -1.38193077e-16,  2.76386153e-16, -9.21287178e-17,  3.45482692e-17,
-        4.60643589e-17,  3.45482692e-17,  0.00000000e+00, -3.45482692e-17,
-       -4.60643589e-17,  0.00000000e+00,  0.00000000e+00, -1.38193077e-16,
-       -2.30321794e-17])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#rename columns to clearly represent decks</span>
 <span class="n">sd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Deck_A&#39;</span><span class="p">,</span> <span class="s1">&#39;Deck_B&#39;</span><span class="p">,</span> <span class="s1">&#39;Deck_C&#39;</span><span class="p">,</span> <span class="s1">&#39;Deck_D&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_win&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_los&#39;</span><span class="p">,</span> <span class="s1">&#39;Payoff&#39;</span><span class="p">,</span> <span class="s1">&#39;Fridberg&#39;</span><span class="p">,</span> <span class="s1">&#39;Horstmann&#39;</span><span class="p">,</span> <span class="s1">&#39;Kjome&#39;</span><span class="p">,</span> <span class="s1">&#39;Maia&#39;</span><span class="p">,</span> <span class="s1">&#39;Premkumar&#39;</span><span class="p">,</span> <span class="s1">&#39;Steingroever2011&#39;</span><span class="p">,</span> <span class="s1">&#39;SteingroverInPrep&#39;</span><span class="p">,</span> <span class="s1">&#39;Wetzels&#39;</span><span class="p">,</span> <span class="s1">&#39;Wood&#39;</span><span class="p">,</span> <span class="s1">&#39;Worthy&#39;</span><span class="p">])</span>
 <span class="n">sd</span>
@@ -1529,7 +1517,6 @@
 <p>This measure of distance d is the euclidean distance given by:</p>
 <div class="math notranslate nohighlight">
 \[d = √((x1-y1)² + (x2-y2)²)\]</div>
-<p>The elbow method and silhouette coefficient have resulted in a strong indication that k=10 for this data set. The elbow method did show a slight change in improvement at the k=3 and k=8 stage and the silhouette coefficient also at the k=8 stage. This reduces the potential that our data should be clustered according to the payload but we will explore the two options- k=3 and k=10.</p>
 </div>
 </div>
 <div class="section" id="pca-dimensionality-reduction">
@@ -1549,7 +1536,7 @@
 <div class="section" id="choosing-the-value-for-k">
 <h2>Choosing the value for k<a class="headerlink" href="#choosing-the-value-for-k" title="Permalink to this headline">¶</a></h2>
 <p>The first step in the k-means algorithm involves calculating what is the most appropriate value for k. We will explore the elbow method and the silhoutte coefficient to determine our value for k within this project.</p>
-<p>From our data exploration thus far we are interested in whether the data should be partitioned in 10 groups (k=10) for each study we have, or whether clustering would be best in 3 groups(k=3) to reflcet the 3 payoff schemes we have seen.</p>
+<p>From our data exploration thus far we are interested in whether the data should be partitioned in 10 groups (k=10) for each study we have, or whether clustering would be best in 3 groups(k=3) to reflect the 3 payoff schemes we have seen.</p>
 <div class="section" id="elbow-method">
 <h3>Elbow Method<a class="headerlink" href="#elbow-method" title="Permalink to this headline">¶</a></h3>
 <p>The elbow method involves calculating the sum of squared error (SSE) and deciding at what point the modelling of the data is most appropriate. Often we can add further clusters without much gain in SSE and so we must determine at which point any further returns are no longer worthwhile.</p>
@@ -1580,7 +1567,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/K_Means_Clustering_23_0.png" src="../_images/K_Means_Clustering_23_0.png" />
+<img alt="../_images/K_Means_Clustering_21_0.png" src="../_images/K_Means_Clustering_21_0.png" />
 </div>
 </div>
 <p>k=3 appears to be a good fit using the elbow method and SSE</p>
@@ -1614,10 +1601,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/K_Means_Clustering_26_0.png" src="../_images/K_Means_Clustering_26_0.png" />
+<img alt="../_images/K_Means_Clustering_24_0.png" src="../_images/K_Means_Clustering_24_0.png" />
 </div>
 </div>
-<p>Again we see that k=3 returns the highest value for the silhouette coefficient confirming that payoff scheme may be the most defining feature in the data for the outcome of the Iowa Gambling task.</p>
+<p>Again we see that k=3 returns the highest value for the silhouette coefficient confirming that payoff scheme may be the most defining feature in the data for the outcome of the Iowa Gambling task. We will proceed to cluster with k=3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
@@ -1639,9 +1626,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/K_Means_Clustering_28_0.png" src="../_images/K_Means_Clustering_28_0.png" />
+<img alt="../_images/K_Means_Clustering_26_0.png" src="../_images/K_Means_Clustering_26_0.png" />
 </div>
 </div>
+<p>Interestingly this instance of k-means has split the data into three clusters which may not intuitively be the ideal clusters. This can often be a limiting factor when using k-means. We now add the Payoff labels back onto the data to visuakise the same points with each payoff scheme identified by a different color.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Component_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Component_2&#39;</span><span class="p">])</span>
@@ -1750,7 +1738,7 @@
     <tr>
       <th>615</th>
       <td>1.692721</td>
-      <td>0.610974</td>
+      <td>0.610973</td>
       <td>Wetzels</td>
       <td>2</td>
     </tr>
@@ -1772,15 +1760,29 @@
 <span class="c1">#for i in range(618):</span>
 <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">original_labels</span><span class="p">[</span><span class="s1">&#39;Component_1&#39;</span><span class="p">],</span> <span class="n">original_labels</span><span class="p">[</span><span class="s2">&quot;Component_2&quot;</span><span class="p">],</span> <span class="n">c</span> <span class="o">=</span> <span class="n">original_labels</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">colors</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Fridberg&#39;</span><span class="p">,</span><span class="s1">&#39;Horstmann&#39;</span><span class="p">,</span><span class="s1">&#39;Kjome&#39;</span><span class="p">,</span><span class="s1">&#39;Maia&#39;</span><span class="p">,</span><span class="s1">&#39;SteingroverInPrep&#39;</span><span class="p">,</span><span class="s1">&#39;Premkumar&#39;</span><span class="p">,</span><span class="s1">&#39;Wood&#39;</span><span class="p">,</span><span class="s1">&#39;Worthy&#39;</span><span class="p">,</span><span class="s1">&#39;Steingroever2011&#39;</span><span class="p">,</span><span class="s1">&#39;Wetzels&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Component 1&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Component 2&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/K_Means_Clustering_31_0.png" src="../_images/K_Means_Clustering_31_0.png" />
+<img alt="../_images/K_Means_Clustering_30_0.png" src="../_images/K_Means_Clustering_30_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fridberg: blue
+Horstmann: red
+Kjome: green
+Maia: yellow
+SteingroverInPrep: black
+Premkumar: orange
+Wood: purple
+Worthy: grey
+Steingroever2011: brown
+Wetzels: pink
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1789,7 +1791,6 @@
 <span class="c1">#for i in range(618):</span>
 <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">original_labels</span><span class="p">[</span><span class="s2">&quot;Component_1&quot;</span><span class="p">],</span> <span class="n">original_labels</span><span class="p">[</span><span class="s2">&quot;Component_2&quot;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">original_labels</span><span class="p">[</span><span class="s2">&quot;Payoff&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">colors</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Component 1&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Component 2&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Clustering by Payoff&quot;</span><span class="p">)</span>
@@ -1798,12 +1799,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No handles with labels found to put in legend.
-</pre></div>
-</div>
-<img alt="../_images/K_Means_Clustering_32_1.png" src="../_images/K_Means_Clustering_32_1.png" />
+<img alt="../_images/K_Means_Clustering_31_0.png" src="../_images/K_Means_Clustering_31_0.png" />
 </div>
 </div>
+<p>We can see that the payoff data clearly has a large impact on our clusters that we have created. All data points have been assigned to the same cluster as other data points in their payoff.</p>
 </div>
 </div>
 <div class="section" id="k-10-without-payoff-data">
@@ -1811,9 +1810,8 @@
 <p>To explore the possibility that our data is impacted by the study in which it was recorded we drop the payoff column and then reduce the dimensionality before computing our clusters with k=10</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#w_out = pd.DataFrame(df, columns=[&#39;Component_1&#39;, &#39;Component_2&#39;])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#drop payoff column</span>
 <span class="n">w_out_payoff</span> <span class="o">=</span> <span class="n">sd</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Payoff&quot;</span><span class="p">])</span>
-<span class="n">w_out_payoff</span>
 
 <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">w_out</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">w_out_payoff</span><span class="p">)</span>
@@ -1840,6 +1838,7 @@
 <img alt="../_images/K_Means_Clustering_34_0.png" src="../_images/K_Means_Clustering_34_0.png" />
 </div>
 </div>
+<p>We then plot the same data points but clustering by study using a unique color for each</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">w_out</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Component_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Component_2&#39;</span><span class="p">])</span>
@@ -1851,21 +1850,36 @@
 <span class="c1">#for i in range(618):</span>
 <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_labels</span><span class="p">[</span><span class="s1">&#39;Component_1&#39;</span><span class="p">],</span> <span class="n">t_labels</span><span class="p">[</span><span class="s2">&quot;Component_2&quot;</span><span class="p">],</span> <span class="n">c</span> <span class="o">=</span> <span class="n">t_labels</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">colors</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Fridberg&#39;</span><span class="p">,</span><span class="s1">&#39;Horstmann&#39;</span><span class="p">,</span><span class="s1">&#39;Kjome&#39;</span><span class="p">,</span><span class="s1">&#39;Maia&#39;</span><span class="p">,</span><span class="s1">&#39;SteingroverInPrep&#39;</span><span class="p">,</span><span class="s1">&#39;Premkumar&#39;</span><span class="p">,</span><span class="s1">&#39;Wood&#39;</span><span class="p">,</span><span class="s1">&#39;Worthy&#39;</span><span class="p">,</span><span class="s1">&#39;Steingroever2011&#39;</span><span class="p">,</span><span class="s1">&#39;Wetzels&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Component 1&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Component 2&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">#show study-colors</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/K_Means_Clustering_35_0.png" src="../_images/K_Means_Clustering_35_0.png" />
+<img alt="../_images/K_Means_Clustering_36_0.png" src="../_images/K_Means_Clustering_36_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fridberg: blue
+Horstmann: red
+Kjome: green
+Maia: yellow
+SteingroverInPrep: black
+Premkumar: orange
+Wood: purple
+Worthy: grey
+Steingroever2011: brown
+Wetzels: pink
+</pre></div>
+</div>
 </div>
 </div>
 </div>
 <div class="section" id="analysis">
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
-<p>The two features we have identified, Payoff scheme and study, have clearly impacted the results of this study. The clusters for payoff show how strongly weighted this was within the clustering algorithm. We can agree from this that the appropriate value for k is 3 and that using k=10 can also tell us an interesting insight into how these features may unexpectedly affect the final clustering result.</p>
+<p>The two features we have identified, Payoff scheme and study, have clearly impacted the results of this clustering algorithm. The clusters for payoff show how strongly weighted this was within the clustering algorithm. We can agree from this that the appropriate value for k is 3 and that using k=10 can also tell us an interesting insight into how using study as a features may affect the final clustering result.</p>
 </div>
 </div>
 
