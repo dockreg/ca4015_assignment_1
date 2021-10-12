@@ -53,6 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Preprocessing, Standardization, and K-means clustering" href="K_Means_Clustering.html" />
+    <link rel="prev" title="Introduction" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -88,6 +90,24 @@
   </a>
  </li>
 </ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="K_Means_Clustering.html">
+   Data Preprocessing, Standardization, and K-means clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Privacy_preserving_k_means.html">
+   Privacy Preserving k-means
+  </a>
+ </li>
+</ul>
+
     </div>
 </nav> <!-- To handle the deprecated key -->
 
@@ -2471,51 +2491,6 @@ memory usage: 7.0+ KB
 </div>
 </div>
 <p>Interestingly payoff 2 shows a much higher selection of choices compared to payoff 1 or payoff 3. The distribution across these three is clearly quite different and so it will be interesting to see if clustering will indicate this also.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#agg_95 = choice_95.apply(pd.Series.value_counts, axis=0)</span>
-
-<span class="c1">#agg_100 = choice_100.apply(pd.Series.value_counts, axis=0)</span>
-
-<span class="c1">#agg_150 = choice_150.apply(pd.Series.value_counts, axis=0)</span>
-<span class="c1">#choice_95</span>
-<span class="c1">#agg_95 = agg_95.fillna(0)</span>
-<span class="c1">#agg_95[&quot;Deck&quot;] = (np.arange(len(agg_95))+1)</span>
-
-<span class="c1">#agg_95 = agg_95.fillna(0)</span>
-<span class="c1">#agg_95[&quot;Deck&quot;] = (np.arange(len(agg_95))+1)</span>
-<span class="c1">#agg_95 = agg_95.pivot(columns=&#39;Deck&#39;, values=[&#39;Choice_1&#39;, &#39;Choice_2&#39;, &#39;Choice_3&#39;, &#39;Choice_4&#39;, &#39;Choice_5&#39;, &#39;Choice_6&#39;,</span>
-       <span class="s1">&#39;Choice_7&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_8&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_9&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_10&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_11&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_12&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_13&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_14&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_15&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_16&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_17&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_18&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_19&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_20&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_21&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_22&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_23&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_24&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_25&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_26&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_27&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_28&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_29&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_30&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_31&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_32&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_33&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_34&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_35&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_36&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_37&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_38&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_39&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_40&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_41&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_42&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_43&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_44&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_45&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_46&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_47&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_48&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_49&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_50&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_51&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_52&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_53&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_54&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_55&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_56&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_57&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_58&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_59&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_60&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_61&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_62&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_63&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_64&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_65&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_66&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_67&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_68&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_69&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_70&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_71&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_72&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_73&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_74&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_75&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_76&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_77&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_78&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_79&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_80&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_81&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_82&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_83&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_84&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_85&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_86&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_87&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_88&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_89&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_90&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_91&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Choice_92&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_93&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_94&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_95&#39;</span><span class="p">])</span>
-<span class="c1">#agg_95</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/hx/6lc74_f56l757kmmkybd34xr0000gn/T/ipykernel_39202/3361174304.py&quot;</span><span class="gt">, line </span><span class="mi">13</span>
-    <span class="s1">&#39;Choice_7&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_8&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_9&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_10&#39;</span><span class="p">,</span> <span class="s1">&#39;Choice_11&#39;</span><span class="p">,</span>
-    <span class="o">^</span>
-<span class="ne">IndentationError</span>: unexpected indent
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -2548,6 +2523,24 @@ memory usage: 7.0+ KB
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="../intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Introduction</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="K_Means_Clustering.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Data Preprocessing, Standardization, and K-means clustering</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         
