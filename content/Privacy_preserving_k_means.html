@@ -1,0 +1,625 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; CA4015 - Clustering Analysis of the Iowa Gambling Task</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">CA4015 - Clustering Analysis of the Iowa Gambling Task</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/Privacy_preserving_k_means.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/dockreg/ca4015_assignment_1"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/dockreg/ca4015_assignment_1/issues/new?title=Issue%20on%20page%20%2Fcontent/Privacy_preserving_k_means.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/dockreg/ca4015_assignment_1/gh-pages?urlpath=tree/content/Privacy_preserving_k_means.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">import</span> <span class="nn">array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/cleaned_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>index</th>
+      <th>Deck_A</th>
+      <th>Deck_B</th>
+      <th>Deck_C</th>
+      <th>Deck_D</th>
+      <th>tot_win</th>
+      <th>tot_los</th>
+      <th>Subj</th>
+      <th>Study</th>
+      <th>Unique_ID</th>
+      <th>balance</th>
+      <th>Payoff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>Subj_1</td>
+      <td>12</td>
+      <td>9</td>
+      <td>3</td>
+      <td>71</td>
+      <td>5800</td>
+      <td>-4650</td>
+      <td>1</td>
+      <td>Fridberg</td>
+      <td>1</td>
+      <td>1150</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Subj_2</td>
+      <td>24</td>
+      <td>26</td>
+      <td>12</td>
+      <td>33</td>
+      <td>7250</td>
+      <td>-7925</td>
+      <td>2</td>
+      <td>Fridberg</td>
+      <td>2</td>
+      <td>-675</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Subj_3</td>
+      <td>12</td>
+      <td>35</td>
+      <td>10</td>
+      <td>38</td>
+      <td>7100</td>
+      <td>-7850</td>
+      <td>3</td>
+      <td>Fridberg</td>
+      <td>3</td>
+      <td>-750</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Subj_4</td>
+      <td>11</td>
+      <td>34</td>
+      <td>12</td>
+      <td>38</td>
+      <td>7000</td>
+      <td>-7525</td>
+      <td>4</td>
+      <td>Fridberg</td>
+      <td>4</td>
+      <td>-525</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Subj_5</td>
+      <td>10</td>
+      <td>24</td>
+      <td>15</td>
+      <td>46</td>
+      <td>6450</td>
+      <td>-6350</td>
+      <td>5</td>
+      <td>Fridberg</td>
+      <td>5</td>
+      <td>100</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>612</th>
+      <td>93</td>
+      <td>Subj_94</td>
+      <td>24</td>
+      <td>69</td>
+      <td>13</td>
+      <td>44</td>
+      <td>12150</td>
+      <td>-11850</td>
+      <td>94</td>
+      <td>Wetzels</td>
+      <td>613</td>
+      <td>300</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>613</th>
+      <td>94</td>
+      <td>Subj_95</td>
+      <td>5</td>
+      <td>31</td>
+      <td>46</td>
+      <td>68</td>
+      <td>9300</td>
+      <td>-7150</td>
+      <td>95</td>
+      <td>Wetzels</td>
+      <td>614</td>
+      <td>2150</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>614</th>
+      <td>95</td>
+      <td>Subj_96</td>
+      <td>18</td>
+      <td>19</td>
+      <td>37</td>
+      <td>76</td>
+      <td>9350</td>
+      <td>-7900</td>
+      <td>96</td>
+      <td>Wetzels</td>
+      <td>615</td>
+      <td>1450</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>615</th>
+      <td>96</td>
+      <td>Subj_97</td>
+      <td>25</td>
+      <td>30</td>
+      <td>44</td>
+      <td>51</td>
+      <td>10250</td>
+      <td>-9050</td>
+      <td>97</td>
+      <td>Wetzels</td>
+      <td>616</td>
+      <td>1200</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>616</th>
+      <td>97</td>
+      <td>Subj_98</td>
+      <td>11</td>
+      <td>104</td>
+      <td>6</td>
+      <td>29</td>
+      <td>13250</td>
+      <td>-15050</td>
+      <td>98</td>
+      <td>Wetzels</td>
+      <td>617</td>
+      <td>-1800</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>617 rows × 13 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Fridberg</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Fridberg&#39;</span><span class="p">]</span>
+<span class="n">Horstmann</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Horstmann&#39;</span><span class="p">]</span>
+<span class="n">Kjome</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Kjome&#39;</span><span class="p">]</span>
+<span class="n">Maia</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Maia&#39;</span><span class="p">]</span>
+<span class="n">SteingroverInPrep</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;SteingroverInPrep&#39;</span><span class="p">]</span>
+<span class="n">Premkumar</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Premkumar&#39;</span><span class="p">]</span>
+<span class="n">Wood</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Wood&#39;</span><span class="p">]</span>
+<span class="n">Worthy</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Worthy&#39;</span><span class="p">]</span>
+<span class="n">Steingroever2011</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Steingroever2011&#39;</span><span class="p">]</span>
+<span class="n">Wetzels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Wetzels&#39;</span><span class="p">]</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">Fridberg</span><span class="p">,</span> <span class="n">Horstmann</span><span class="p">,</span> <span class="n">Kjome</span><span class="p">,</span> <span class="n">Maia</span><span class="p">,</span> <span class="n">SteingroverInPrep</span><span class="p">,</span> <span class="n">Premkumar</span><span class="p">,</span> <span class="n">Wood</span><span class="p">,</span> <span class="n">Worthy</span><span class="p">,</span> <span class="n">Steingroever2011</span><span class="p">,</span> <span class="n">Wetzels</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clusters</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;Subj&#39;</span><span class="p">,</span> <span class="s1">&#39;Study&#39;</span><span class="p">,</span> <span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Unique_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">])</span>
+
+    <span class="n">scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="c1">#rename columns to clearly represent decks</span>
+    <span class="n">sd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Deck_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Deck_2&#39;</span><span class="p">,</span> <span class="s1">&#39;Deck_3&#39;</span><span class="p">,</span> <span class="s1">&#39;Deck_4&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_win&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_los&#39;</span><span class="p">,</span> <span class="s1">&#39;Payoff&#39;</span><span class="p">])</span>
+    <span class="n">sd</span>
+
+    <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">sd</span><span class="p">)</span>
+
+    <span class="c1">#w_out = pd.DataFrame(df, columns=[&#39;Component_1&#39;, &#39;Component_2&#39;])</span>
+    <span class="c1">#w_out_payoff = sd.drop(columns=[&quot;Payoff&quot;])</span>
+
+    <span class="c1">#w_out = pca.fit_transform(w_out_payoff)</span>
+
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+ 
+    <span class="c1">#predict the labels of clusters.</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">label</span><span class="p">:</span>
+        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+ 
+    <span class="c1">#Getting unique labels</span>
+    <span class="n">u_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="n">centroids</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+    <span class="n">clusters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">centroids</span><span class="p">)</span>
+    
+    <span class="c1">#plotting the results:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">u_labels</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="n">i</span> <span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="n">i</span> <span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="c1">#plt.title()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Component 1&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Component 2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Privacy_preserving_k_means_4_0.png" src="../_images/Privacy_preserving_k_means_4_0.png" />
+<img alt="../_images/Privacy_preserving_k_means_4_1.png" src="../_images/Privacy_preserving_k_means_4_1.png" />
+<img alt="../_images/Privacy_preserving_k_means_4_2.png" src="../_images/Privacy_preserving_k_means_4_2.png" />
+<img alt="../_images/Privacy_preserving_k_means_4_3.png" src="../_images/Privacy_preserving_k_means_4_3.png" />
+<img alt="../_images/Privacy_preserving_k_means_4_4.png" src="../_images/Privacy_preserving_k_means_4_4.png" />
+<img alt="../_images/Privacy_preserving_k_means_4_5.png" src="../_images/Privacy_preserving_k_means_4_5.png" />
+<img alt="../_images/Privacy_preserving_k_means_4_6.png" src="../_images/Privacy_preserving_k_means_4_6.png" />
+<img alt="../_images/Privacy_preserving_k_means_4_7.png" src="../_images/Privacy_preserving_k_means_4_7.png" />
+<img alt="../_images/Privacy_preserving_k_means_4_8.png" src="../_images/Privacy_preserving_k_means_4_8.png" />
+<img alt="../_images/Privacy_preserving_k_means_4_9.png" src="../_images/Privacy_preserving_k_means_4_9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">arr</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">#plt.legend()</span>
+<span class="c1">#plt.title()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Component 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Component 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Privacy_preserving_k_means_5_0.png" src="../_images/Privacy_preserving_k_means_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+ 
+<span class="c1">#predict the labels of clusters.</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+ 
+<span class="c1">#Getting unique labels</span>
+<span class="n">u_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+    
+<span class="c1">#plotting the results:</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">u_labels</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="n">i</span> <span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">label</span> <span class="o">==</span> <span class="n">i</span> <span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">i</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1">#plt.title()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Component 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Component 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+ 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Privacy_preserving_k_means_6_0.png" src="../_images/Privacy_preserving_k_means_6_0.png" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By George Dockrell<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
